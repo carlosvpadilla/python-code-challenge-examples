@@ -1,3 +1,9 @@
+#
+# Copyright (c) 2023, Carlos Vergara
+# All rights reserved.
+# 
+# This source code is licensed under the BSD-style license found in the
+# LICENSE file in the root directory of this source tree. 
 """Generate all subsets.
 
 For example, the subsets of ``{0,1,2}`` are ``{}, {0}, {1}, {2}, {0,1},
@@ -5,7 +11,7 @@ For example, the subsets of ``{0,1,2}`` are ``{}, {0}, {1}, {2}, {0,1},
 recursion, or use the bitwise representation.
 
 Consider that these will generate all subsets for all natural numbers
-including zero of size n. 
+including zero of size n.
 """
 
 
