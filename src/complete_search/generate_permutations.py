@@ -1,3 +1,10 @@
+#
+# Copyright (c) 2023, Carlos Vergara
+# All rights reserved.
+# 
+# This source code is licensed under the BSD-style license found in the
+# LICENSE file in the root directory of this source tree.
+"""Generate all permutations for all numbers from 0 to n."""
 from itertools import permutations
 
 class RecursivePermutations:
