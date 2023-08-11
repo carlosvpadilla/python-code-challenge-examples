@@ -14,29 +14,43 @@ Consider that these will generate all subsets for all natural numbers
 including zero of size n.
 """
 
+class RecursiveSearch():
+    subset: set
 
-def print_recursive_search(n: int, subset: list=[], k: int=0) -> None:
-    if k == n:
-        print(subset)
-    else:
-        print_recursive_search(n, subset, k + 1)
-        subset.append(k)
-        print_recursive_search(n, subset, k + 1)
-        subset.pop()
+    def __init__(self):
+        self._reset()
 
+    def _reset(self):
+        self.subset = set()
+    
+    def _print_recursive_search(self, n: int, k: int) -> None:
+        if k == n:
+            print(self.subset)
+        else:
+            self._print_recursive_search(n, k+1)
+            self.subset.add(k)
+            self._print_recursive_search(n, k+1)
+            self.subset.remove(k)
 
-def generate_recursive_search(
-        n: int, subset: set=set(), k: int=0) -> list[set]:
-    if k == n:
-        # If we don't do a copy, which takes O(n), the remove function will
-        # remove numbers from the solution
-        return [subset.copy()]
-    else:
-        left_search = generate_recursive_search(n, subset, k + 1)
-        subset.add(k)
-        right_search = generate_recursive_search(n, subset, k + 1)
-        subset.remove(k)
-        return left_search + right_search
+    def print_recursive_search(self, n: int) -> None:
+        self._reset()
+        self._print_recursive_search(n, 0)
+
+    def _generate_recursive_search(self, n: int, k: int) -> list[list]:
+        if k == n:
+            # If we don't do a copy, which takes O(n), the remove function will
+            # remove numbers from the solution
+            return [self.subset.copy()]
+        else:
+            left_search = self._generate_recursive_search(n, k+1)
+            self.subset.add(k)
+            right_search = self._generate_recursive_search(n, k+1)
+            self.subset.remove(k)
+            return left_search + right_search
+    
+    def generate_recursive_search(self, n: int) -> list[list]:
+        self._reset()
+        return self._generate_recursive_search(n, 0)
 
 
 def print_bitwise_search(n: int) -> None:
@@ -64,10 +78,11 @@ def generate_bitwise_search(n: int) -> list[set]:
 
 
 if __name__ == "__main__":
+    rs = RecursiveSearch()
     print("First, print all generated subsets in the function")
-    print_recursive_search(3)
+    rs.print_recursive_search(3)
     print("Then, generate an array of subsets and print everything")
-    print(generate_recursive_search(3))
+    print(rs.generate_recursive_search(3))
     print("But we can do the same with bits")
     print_bitwise_search(3)
     print("And we can get a useful list too")
