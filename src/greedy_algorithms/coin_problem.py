@@ -4,7 +4,7 @@
 # 
 # This source code is licensed under the BSD-style license found in the
 # LICENSE file in the root directory of this source tree.
-"""For a sum of money considering certain coins."""
+"""How many coins do we need to form a specific sum of money?"""
 
 
 def greedy_coins(coins: list, n: int) -> int:
@@ -33,7 +33,7 @@ if __name__ == "__main__":
     n = 6
     print("But this does not work for the general case. Assume these coins:")
     print(coins)
-    print(f"The target is {n}. The optimal solution is 2 = 3+3.")
+    print(f"The target is {n}. The optimal solution is 2 coins, 3+3.")
     print("But the code says...")
     print(greedy_coins(coins, n))
     print("This algorithm does not generalize well, although it works for "
