@@ -9,7 +9,6 @@ from abc import ABC
 from abc import abstractmethod
 from statistics import median_low
 from statistics import mean
-from math import floor
 
 
 class Polynomial(ABC):
