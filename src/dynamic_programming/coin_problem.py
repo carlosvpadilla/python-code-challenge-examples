@@ -17,7 +17,6 @@ class CoinSolver:
     first_coin: int
     count: dict[int, int]
 
-
     def __init__(self, coins: list[int]) -> None:
         self.coins = coins
         self.solutions = {0: 0}
